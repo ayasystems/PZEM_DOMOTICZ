@@ -17,6 +17,13 @@ import requests
 import time 
 import os 
 
+#URL del domoticz
+domoticzServer="http://192.168.3.241:80"
+#IDx de los medidores
+deviceVol = '76'
+deviceWh = '77'
+devideA  = '137'
+
 class BTPOWER:
 
    setAddrBytes       =   [0xB4,0xC0,0xA8,0x01,0x01,0x00,0x1E]
@@ -109,10 +116,6 @@ class BTPOWER:
       self.ser.close()
 
 stop_event = multiprocessing.Event()
-domoticzServer="http://192.168.3.241:80"
-deviceVol = '76'
-deviceWh = '77'
-devideA  = '137'
 domoticURLVol = '/json.htm?type=command&param=udevice&idx='+deviceVol+'&nvalue=V&svalue='
 domoticURLWh = '/json.htm?type=command&param=udevice&idx='+deviceWh+'&nvalue=0&svalue='
 domoticURLA = '/json.htm?type=command&param=udevice&idx='+devideA+'&nvalue=0&svalue='
